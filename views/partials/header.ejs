@@ -1,10 +1,10 @@
 <nav class="navbar">
   <div class="title">
-    Code Gallery
+    <a href="/">Code Gallery</a> 
   </div>
   <ul>
     <% if (isAuthenticated) { %>
-      <li><a href="#">Challenges</a></li>
+      <li><a href="/challenges">Challenges</a></li>
       <li class="name"><a href="#"><%= user.name %></a></li>
       <li><a href="#">Logout</a></li>
       <% } else { %>

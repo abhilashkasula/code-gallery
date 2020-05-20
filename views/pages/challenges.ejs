@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <header>
+      <%- include('../partials/header') %>
+    </header>
+    <h3 class="challenges-header">Challenges you taken up</h3>
+    <div class="challenges">
+      <% if (user.challenges.length) { %> <% user.challenges.forEach(c => { %>
+      <a class="challenge" href="/challenges/<%= c.id %>">
+        <%= challenges.find(challenge => challenge.id === c.id).title %>
+      </a>
+      <% })} else { %>
+      <div class="challenge">No Challenges Found</div>
+      <% } %>
+    </div>
+  </body>
+</html>

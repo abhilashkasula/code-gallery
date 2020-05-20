@@ -43,3 +43,36 @@ a {
   text-decoration: none;
   color: black;
 }
+
+.challenges {
+  display: flex;
+  margin-top: 0em;
+  justify-content: center;
+}
+
+.challenges-header {
+  text-align: center;
+  margin-top: 2em;
+  font-size: 2em;
+}
+
+.challenge {
+  font-size: 1.5em;
+  margin: 1em;
+}
+
+.challenge-desc {
+  display: flex;
+  justify-content: center;
+}
+
+.challenge-desc > p{
+  margin-top: 0;
+  text-align: center;
+  word-wrap: break-word;
+  line-height: 1.5em;
+}
+
+.underline {
+  text-decoration: underline;
+}
