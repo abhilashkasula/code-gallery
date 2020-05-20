@@ -1,10 +1,11 @@
 const express = require('express');
+const handlers = require('./handlers');
 
 const app = express();
 
 app.set('view engine', 'ejs');
 
 app.use(express.static('public', {index: false}))
-app.get('/', (req, res) => res.render('pages/index', {user: {isAuthenticated: true, name: 'abhi'}}));
+app.get('/', handlers.serveHomepage);
 
 module.exports = {app};

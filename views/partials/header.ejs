@@ -3,8 +3,8 @@
     Code Gallery
   </div>
   <ul>
-    <% if (user.isAuthenticated) { %>
-      <li><a href="#">New Challenge</a></li>
+    <% if (isAuthenticated) { %>
+      <li><a href="#">Challenges</a></li>
       <li class="name"><a href="#"><%= user.name %></a></li>
       <li><a href="#">Logout</a></li>
       <% } else { %>
