@@ -1,0 +1,14 @@
+<nav class="navbar">
+  <div class="title">
+    Code Gallery
+  </div>
+  <ul>
+    <% if (user.isAuthenticated) { %>
+      <li><a href="#">New Challenge</a></li>
+      <li class="name"><a href="#"><%= user.name %></a></li>
+      <li><a href="#">Logout</a></li>
+      <% } else { %>
+        <li><a href="#">Login</a></li>
+      <% } %>
+  </ul>
+</nav>

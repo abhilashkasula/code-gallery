@@ -1,0 +1,45 @@
+* {
+  font-family: monospace;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0.5em;
+  background-color: gainsboro;
+  align-items: center;
+  height: 8vh;
+}
+
+.navbar > ul {
+  display: flex;
+  margin: 0;
+  align-items: center;
+}
+
+.navbar > .title {
+  font-size: 2vw;
+  font-weight: 900;
+}
+
+.navbar > ul > li {
+  list-style: none;
+  margin: 0 0.5em;
+  padding: 0.3em;
+  color: #5c5656;
+  text-align: center;
+}
+
+.navbar > ul > .name {
+  color: #464141;
+}
+
+.navbar > ul > li > a {
+  font-size: 1.2vw;
+  font-weight: 600;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
