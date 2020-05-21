@@ -21,13 +21,17 @@ const serveChallenge = function (req, res) {
   res.render('pages/challenge', {user: {name: 'john'}, challenge});
 };
 
+const generateSeq = num => () => ++num;
+const generateSessionId = generateSeq(0);
+
 const login = function (req, res) {
   const {username, password} = req.body;
   const {users} = req.app.locals;
   const name = users.validate(username, password);
   if(!name) return res.json({isValidUser: false});
-  req.app.locals.sessions[1] = name;
-  res.cookie('session', 1).json({isValidUser: true, dest: '/'});
+  const id = generateSessionId();
+  req.app.locals.sessions[id] = name;
+  res.cookie('session', id).json({isValidUser: true, dest: '/'});
 };
 
 const signup = function (req, res) {

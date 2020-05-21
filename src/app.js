@@ -52,7 +52,7 @@ const challenges = Challenges.load([
   }
 ]);
 
-const sessions = {1: 'john'};
+const sessions = {};
 
 app.locals.users = users;
 app.locals.challenges = challenges;
