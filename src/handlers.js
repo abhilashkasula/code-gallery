@@ -53,7 +53,11 @@ const allow = function(req, res, next) {
   if(req.user) {
     return next();
   }
-  return res.status(404).send('You need to login first');
+  return res.status(400).render('pages/not_found', {
+    status: 400,
+    title: 'You\'re Not Allowed',
+    message: 'Please login to continue'
+  });
 }
 
 const createNewChallenge = function(req, res) {
@@ -79,10 +83,21 @@ const createNewChallenge = function(req, res) {
 };
 
 const logout = function(req, res) {
-  if(!req.user) return res.status(404).send('You need to login first');
+  if(!req.user) {
+    const title = 'You\'re Not Allowed';
+    const message = 'Please login to continue';
+    return res.status(400).render('pages/not_found', {status: 400, title, message});
+  }
   const {session} = req.cookies;
   delete req.app.locals.sessions[session];
   res.clearCookie('session').redirect('/');
+};
+
+const serveNotFound = function(req, res) {
+  const status = 404;
+  const title = 'Page Not Found';
+  const message = 'Your requested page is not with us';
+  res.status(status).render('pages/not_found', {status, title, message});
 };
 
 module.exports = {
@@ -94,5 +109,6 @@ module.exports = {
   findUser,
   allow,
   createNewChallenge,
-  logout
+  logout,
+  serveNotFound
 };
