@@ -27,6 +27,10 @@ class Users{
     user.addChallenge(challengeId);
   }
 
+  toJSON() {
+    return this.users;
+  }
+
   static load(userList) {
     const users = new Users();
     userList.forEach(user => {

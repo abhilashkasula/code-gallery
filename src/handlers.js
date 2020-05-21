@@ -27,7 +27,6 @@ const generateSessionId = generateSeq(0);
 const login = function (req, res) {
   const {username, password} = req.body;
   const {users} = req.app.locals;
-  console.log(users);
   const name = users.validate(username, password);
   if(!name) return res.json({isValidUser: false});
   const id = generateSessionId();

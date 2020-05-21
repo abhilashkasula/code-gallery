@@ -30,7 +30,7 @@ app.use(express.json());
 app.use(handlers.findUser);
 app.get('/', handlers.serveHomepage);
 app.post('/login', handlers.hasFields('username', 'password'), handlers.login);
-app.post('/signup', handlers.hasFields('username', 'password'), handlers.signup );
+app.post( '/signup', handlers.hasFields('username', 'password'), handlers.signup );
 app.get('/logout', handlers.logout);
 app.use('/challenges', challengesRouter);
 app.use(handlers.serveNotFound);
