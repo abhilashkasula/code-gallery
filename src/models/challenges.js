@@ -6,7 +6,8 @@ class Challenges {
   }
 
   add(challenge) {
-    this.challenges.push(new Challenge(challenge));
+    const id = this.generateNextId();
+    this.challenges.push(new Challenge(id, challenge));
   }
 
   getChallenge(id) {
@@ -34,9 +35,13 @@ class Challenges {
   }
 
   generateNextId() {
-    const challenge = this.challenges[this.challenge.length - 1];
+    const challenge = this.challenges[this.challenges.length - 1];
     const id = (challenge && challenge.id) || 0;
     return id + 1;
+  }
+
+  toJSON() {
+    return this.challenges;
   }
 
   static load(challengeList) {

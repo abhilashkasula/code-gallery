@@ -1,21 +1,22 @@
 const serveHomepage = function (req, res) {
-  if(req.user) {
-    return res.render('pages/home', {user: req.user});
+  if(!req.user) return res.render('pages/login');
+  const options = {
+    user: req.user,
+    challenges: JSON.parse(JSON.stringify(req.app.locals.challenges))
   }
-  res.render('pages/login');
+  return res.render('pages/home', options);
 };
 
 const serveChallenges = function (req, res) {
   res.render('pages/challenges', {
-    user: req.app.locals.users[0],
-    challenges: req.app.locals.challenges,
+    user: req.user,
+    challenges: JSON.parse(JSON.stringify(req.app.locals.challenges)),
   });
 };
 
 const serveChallenge = function (req, res) {
   const id = +req.url.split('/')[1];
-  const {challenges} = req.app.locals;
-  const challenge = challenges.find((challenge) => challenge.id === id);
+  const challenge = req.app.locals.challenges.getChallenge(id);
   if (!challenge) return res.sendStatus(404);
   res.render('pages/challenge', {user: {name: 'john'}, challenge});
 };

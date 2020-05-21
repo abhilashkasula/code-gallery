@@ -21,11 +21,11 @@ const challenges = Challenges.load([
     title: 'something',
     description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iusto reprehenderit eos provident laboriosam recusandae temporibus magnam, illum adipisci voluptates, animi praesentium dicta debitis? Qui eius, provident eligendi accusantium repellat ab?',
     createdBy: 'john',
-    createdAt: 'mon',
+    createdAt: 'Thu May 21 2020 19:16:45 GMT+0530 (India Standard Time)',
     solvers: [
       {
         name: 'raja',
-        startedAt: 'mon',
+        startedAt: 'Thu May 21 2020 19:16:45 GMT+0530 (India Standard Time)',
         isSolved: false,
         solvedAt: undefined
       }

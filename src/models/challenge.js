@@ -2,12 +2,12 @@ const Solvers = require('./solvers');
 const Discussions = require('./discussions');
 
 class Challenge {
-  constructor(challenge) {
-    this.id = challenge.id;
+  constructor(id, challenge) {
+    this.id = id;
     this.title = challenge.title;
     this.description = challenge.description;
     this.createdBy = challenge.createdBy;
-    this.createdAt = challenge.createdAt;
+    this.createdAt = new Date(challenge.createdAt);
     this.solvers = Solvers.load(challenge.solvers);
     this.discussions = Discussions.load(challenge.discussions);
   }

@@ -21,6 +21,10 @@ class Discussions {
     return id + 1;
   }
 
+  toJSON() {
+    return this.discussions;
+  }
+
   static load(list) {
     const discussions = new Discussions();
     list.forEach(discussion => {

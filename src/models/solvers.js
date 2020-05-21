@@ -14,6 +14,10 @@ class Solvers {
     solver.makeAsComplete(time);
   }
 
+  toJSON() {
+    return this.solvers;
+  }
+
   static load(list) {
     const solvers = new Solvers();
     list.forEach(({name, startedAt, isSolved, solvedAt}) => {
