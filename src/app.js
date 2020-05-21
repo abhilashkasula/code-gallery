@@ -4,6 +4,7 @@ const handlers = require('./handlers');
 const Users = require('./models/users');
 const Challenges = require('./models/challenges');
 const {challengesRouter} = require('./routes/challenges');
+const {REDIS_URL} = require(`${__dirname}/../config.js`);
 
 const app = express();
 
