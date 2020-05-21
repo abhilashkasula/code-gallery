@@ -96,6 +96,17 @@ const serveNotFound = function(req, res) {
   res.status(status).render('pages/not_found', {status, title, message});
 };
 
+const hasFields = function(...fields) {
+  return (req, res, next) => {
+    if(fields.every(field => field in req.body)) return next();
+    res.status(400).render('pages/not_found', {
+      status: 400,
+      title: 'Bad Request',
+      message: 'Not enough params'
+    });
+  }
+};
+
 module.exports = {
   serveHomepage,
   serveChallenges,
@@ -106,5 +117,6 @@ module.exports = {
   allow,
   createNewChallenge,
   logout,
-  serveNotFound
+  serveNotFound,
+  hasFields
 };
