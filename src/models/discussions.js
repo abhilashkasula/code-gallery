@@ -16,7 +16,7 @@ class Discussions {
   }
 
   generateNextId() {
-    const discussion = this.discussions[this.discussions.length];
+    const discussion = this.discussions[this.discussions.length - 1];
     const id = (discussion && discussion.id) || 0;
     return id + 1;
   }
