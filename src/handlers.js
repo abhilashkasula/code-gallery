@@ -1,5 +1,5 @@
 const serveHomepage = function (req, res) {
-  res.render('pages/index', {
+  res.render('pages/home', {
     isAuthenticated: true,
     user: {name: 'john'},
     challenges: req.app.locals.challenges,
