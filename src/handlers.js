@@ -22,29 +22,24 @@ const serveChallenge = function (req, res) {
 
 const login = function (req, res) {
   const {username, password} = req.body;
-  const user = req.app.locals.users.find((user) => user.name === username);
-
-  if (user && user.password === password) {
-    req.app.locals.sessions[1] = user.name;
-    return res.cookie('session', 1).json({isValidUser: true, dest: '/'});
-  }
-  res.json({isValidUser: false});
+  const {users} = req.app.locals;
+  const name = users.validate(username, password);
+  if(!name) return res.json({isValidUser: false});
+  req.app.locals.sessions[1] = name;
+  res.cookie('session', 1).json({isValidUser: true, dest: '/'});
 };
 
 const signup = function (req, res) {
   const {username, password} = req.body;
-  const user = req.app.locals.users.find((user) => user.name === username);
-
-  if (user) return res.json({isValidUser: false});
-  req.app.locals.users.push({name: username, password, challenges: []});
-  return res.json({isValidUser: true, dest: '/'});
+  const isValidUser = req.app.locals.users.add(username, password, []);
+  res.json({isValidUser, dest: '/'});
 };
 
 const findUser = function (req, res, next) {
   const {session} = req.cookies;
   const {users, sessions} = req.app.locals;
   if (session && sessions[session]) {
-    req.user = users.find((user) => user.name === sessions[session]);
+    req.user = users.getUser(sessions[session]);
   }
   next();
 };

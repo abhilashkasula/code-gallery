@@ -1,17 +1,18 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const handlers = require('./handlers');
+const Users = require('./models/users');
 const {challengesRouter} = require('./routes/challenges');
 
 const app = express();
 
 app.set('view engine', 'ejs');
 
-const users = [{
-    name: 'john',
-    password: '1234',
-    challenges: [{id: 1, takenAt: 'mon', isCompleted: false, completedAt: 'mon'}]
-}];
+const users = Users.load([{
+  name: 'john',
+  password: '1234',
+  challenges: [{id: 1, takenAt: 'mon', isCompleted: false, completedAt: 'mon'}]
+}])
 
 const challenges = [
   {
