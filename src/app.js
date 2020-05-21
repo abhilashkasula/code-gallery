@@ -2,6 +2,7 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const handlers = require('./handlers');
 const Users = require('./models/users');
+const Challenges = require('./models/challenges');
 const {challengesRouter} = require('./routes/challenges');
 
 const app = express();
@@ -14,27 +15,19 @@ const users = Users.load([{
   challenges: [{id: 1, takenAt: 'mon', isCompleted: false, completedAt: 'mon'}]
 }])
 
-const challenges = [
+const challenges = Challenges.load([
   {
     id: 1,
     title: 'something',
     description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iusto reprehenderit eos provident laboriosam recusandae temporibus magnam, illum adipisci voluptates, animi praesentium dicta debitis? Qui eius, provident eligendi accusantium repellat ab?',
-    postedBy: 'john',
-    postedAt: 'mon',
-    tookUpBy: [
+    createdBy: 'john',
+    createdAt: 'mon',
+    solvers: [
       {
         name: 'raja',
-        tookAt: 'mon',
-      },
-      {
-        name: 'ravi',
-        tookAt: 'mon',
-      }
-    ],
-    solvedBy: [
-      {
-        name: 'raja',
-        solvedAt: 'mon',
+        startedAt: 'mon',
+        isSolved: false,
+        solvedAt: undefined
       }
     ],
     discussions: [
@@ -42,11 +35,11 @@ const challenges = [
         title: 'wrong input', 
         comments: [
           {
-            postedBy: 'john', 
+            name: 'john', 
             comment: 'some text'
           },
           {
-            postedBy: 'john', 
+            name: 'john', 
             comment: 'some more text'
           }
         ]
@@ -57,7 +50,7 @@ const challenges = [
       }
     ]
   }
-]
+]);
 
 const sessions = {1: 'john'};
 
