@@ -35,4 +35,13 @@ const login = function(req, res) {
   res.json({isValidUser: false});
 };
 
-module.exports = {serveHomepage, serveChallenges, serveChallenge, login};
+const signup = function(req, res) {
+  const {username, password} = req.body;
+  const user = req.app.locals.users.find(user => user.name === username);
+
+  if(user) return res.json({isValidUser: false});
+  req.app.locals.users.push({name: username, password, challenges: []});
+  return res.json({isValidUser: true, dest: '/'});
+};
+
+module.exports = {serveHomepage, serveChallenges, serveChallenge, login, signup};

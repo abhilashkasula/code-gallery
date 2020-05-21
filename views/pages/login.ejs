@@ -28,7 +28,7 @@
     <div class="container hide-display" id="signup-container">
       <h2>Signup to continue</h2>
       <div class="action">
-        <label class="wrong hide">Username or password is incorrect</label>
+        <label class="wrong hide" id="wrong-name">Username already exists</label>
         <div class="credentials-container">
           <label for="username">Username:</label>
           <input type="text" class="credentials" id="signup-username" />
@@ -41,6 +41,8 @@
           <label for="password">Confirm:&nbsp;</label>
           <input type="password" class="credentials" id="signup-confirm" />
         </div>
+        <label class="wrong hide" id="length-err">Password must be 8 characters</label>
+        <label class="wrong hide" id="match-err">Password didn't match</label>
         <button id="signup" class="button green"> Signup </button>
         <button class="button blue" onclick="swap('login-container', 'signup-container')">Login</button>
       </div>

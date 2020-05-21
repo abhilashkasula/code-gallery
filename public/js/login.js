@@ -11,22 +11,35 @@ const showErr = function({isValidUser, dest}, id) {
   setTimeout(() => document.querySelector(`#${id}`).classList.add('hide'), 3000);
 };
 
+const getOptions = function(body) {
+  return {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(body)
+  }
+}
+
 const login = function() {
   const username = document.querySelector('#login-username').value.trim();
   const password = document.querySelector('#login-password').value.trim();
   if(!username || !password) return;
-  
-  const options = {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({username, password})
-  };
-  fetch('/login', options)
+
+  fetch('/login', getOptions({username, password}))
     .then(res => res.json())
     .then(res => showErr(res, 'incorrectUP'));
 };
 
 const signup = function() {
+  const username = document.querySelector('#signup-username').value.trim();
+  const password = document.querySelector('#signup-password').value.trim();
+  const confirm = document.querySelector('#signup-confirm').value.trim();
+  if(!username || !password) return;
+  if(password.length < 8) return showErr({isValidUser: false}, 'length-err');
+  if(password !== confirm) return showErr({isValidUser: false}, 'match-err');
+
+  fetch('/signup', getOptions({username, password}))
+    .then(res => res.json())
+    .then(res => showErr(res, 'wrong-name'));
 };
 
 const addListeners = function() {

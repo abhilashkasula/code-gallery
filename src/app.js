@@ -69,6 +69,7 @@ app.use(cookieParser());
 app.use(express.json())
 app.get('/', handlers.serveHomepage);
 app.post('/login', handlers.login);
+app.post('/signup', handlers.signup);
 app.use('/challenges', challengesRouter);
 
 module.exports = {app};
