@@ -82,12 +82,8 @@ const createNewChallenge = function(req, res) {
   res.end();
 };
 
-const logout = function(req, res) {
-  if(!req.user) {
-    const title = 'You\'re Not Allowed';
-    const message = 'Please login to continue';
-    return res.status(400).render('pages/not_found', {status: 400, title, message});
-  }
+const logout = function(req, res, next) {
+  if(!req.user) return next();
   const {session} = req.cookies;
   delete req.app.locals.sessions[session];
   res.clearCookie('session').redirect('/');
