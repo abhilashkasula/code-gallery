@@ -14,7 +14,6 @@
     <div class="challenges">
       <div>
       <% if (user.challenges.length) { %> <% user.challenges.forEach(id => { %>
-      <% console.log(user.challenges) %>
       <a class="challenge" href="/challenges/<%= id %>">
         <%= challenges.find(challenge => challenge.id === id).title %>
       </a>
