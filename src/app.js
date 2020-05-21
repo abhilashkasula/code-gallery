@@ -1,4 +1,5 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const handlers = require('./handlers');
 const {challengesRouter} = require('./routes/challenges');
 
@@ -57,11 +58,17 @@ const challenges = [
   }
 ]
 
+const sessions = {1: 'john'};
+
 app.locals.users = users;
 app.locals.challenges = challenges;
+app.locals.sessions = sessions;
 
 app.use(express.static('public', {index: false}))
+app.use(cookieParser());
+app.use(express.json())
 app.get('/', handlers.serveHomepage);
+app.post('/login', handlers.login);
 app.use('/challenges', challengesRouter);
 
 module.exports = {app};

@@ -1,0 +1,64 @@
+* {
+  font-family: monospace;
+}
+
+.title {
+  text-align: center;
+  font-size: 3em;
+  font-weight: 600;
+  padding: .5em;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 2em;
+}
+
+.action {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid;
+  border-radius: 0.4em;
+  padding: 3em;
+}
+
+.credentials {
+  margin: 0.5em;
+  padding: 0.5em;
+  width: 15em;
+}
+
+.button {
+  margin-top: 2em;
+  padding: 0.8em;
+  border: 1px solid;
+  border-radius: 0.3em;
+  color: white;
+  font-weight: 600;
+  font-size: 1.1em;
+  outline: none;
+}
+
+.green {
+  background: linear-gradient(rgb(19, 194, 19), rgb(37, 163, 37));
+}
+
+.blue {
+  margin-top: 1em;
+  background: linear-gradient(rgb(19, 174, 194), rgb(37, 134, 163));
+}
+
+.wrong {
+  color: red;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+.hide-display {
+  display: none;
+}
