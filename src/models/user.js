@@ -12,14 +12,12 @@ class User {
     return undefined;
   }
 
+  addChallenge(id) {
+    !this.challenges.includes(id) && this.challenges.push(id);
+  }
+
   getChallenges() {
-    return this.challenges.map(challenge => {
-      const id = challenge.id;
-      const takenAt = challenge.takenAt;
-      const isCompleted = challenge.isCompleted;
-      const completedAt = challenge.completedAt;
-      return {id, takenAt, isCompleted, completedAt};
-    });
+    return this.challenges.map(id => id);
   }
 }
 

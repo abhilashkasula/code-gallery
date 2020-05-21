@@ -9,6 +9,7 @@
     <header>
       <%- include('../partials/header') %>
     </header>
+    <h1 class="home-header">Available Challenges</h1>
     <div class="challenges">
       <% if(challenges.length) { challenges.forEach(challenge => { %>
       <a href="/challenges/<%= challenge.id %>" class="challenges-header"> <%= challenge.title %> </a>

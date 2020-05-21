@@ -3,6 +3,8 @@
   display: flex;
   margin-top: 0em;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .challenges-header {
@@ -11,9 +13,18 @@
   font-size: 2em;
 }
 
+.challenges > div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .challenge {
   font-size: 1.5em;
-  margin: 1em;
+  margin: 0.2em;
+  background: gainsboro;
+  padding: 1em;
+  text-align: center;
 }
 
 .challenge-desc {
@@ -43,6 +54,8 @@
   background: linear-gradient(rgb(19, 194, 19), rgb(37, 163, 37));
   color: white;
   cursor: pointer;
+  font-size: 1.1em;
+  padding: 0.6em 2em;
   outline: none;
 }
 
@@ -74,4 +87,8 @@ hr {
 .challenge-labels {
   margin-bottom: 0;
   margin-top: 0.5em;
+}
+
+.challenge:hover {
+  background: #cecbcb;
 }

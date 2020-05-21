@@ -12,7 +12,7 @@ app.set('view engine', 'ejs');
 const users = Users.load([{
   name: 'john',
   password: '1234',
-  challenges: [{id: 1, takenAt: 'mon', isCompleted: false, completedAt: 'mon'}]
+  challenges: [1]
 }])
 
 const challenges = Challenges.load([

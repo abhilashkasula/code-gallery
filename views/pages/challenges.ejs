@@ -4,6 +4,7 @@
     <%- include('../partials/head') %>
     <link rel="stylesheet" href="/css/navbar.css">
     <link rel="stylesheet" href="/css/challenges.css">
+    <script src="/js/challenges.js"></script>
   </head>
   <body>
     <header>
@@ -11,13 +12,16 @@
     </header>
     <h3 class="challenges-header">Challenges you taken up</h3>
     <div class="challenges">
-      <% if (user.challenges.length) { %> <% user.challenges.forEach(c => { %>
-      <a class="challenge" href="/challenges/<%= c.id %>">
-        <%= challenges.find(challenge => challenge.id === c.id).title %>
+      <div>
+      <% if (user.challenges.length) { %> <% user.challenges.forEach(id => { %>
+      <% console.log(user.challenges) %>
+      <a class="challenge" href="/challenges/<%= id %>">
+        <%= challenges.find(challenge => challenge.id === id).title %>
       </a>
       <% })} else { %>
       <div class="challenge">No Challenges Found</div>
       <% } %>
+    </div>
     </div>
     <hr />
     <div class="new-challenge">

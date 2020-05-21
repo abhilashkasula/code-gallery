@@ -52,6 +52,27 @@ const allow = function(req, res, next) {
   return res.status(404).send('You need to login first');
 }
 
+const createNewChallenge = function(req, res) {
+  const {title, description} = req.body;
+  const time = new Date();
+  const challenge = {
+    title,
+    description,
+    createdBy: req.user.name,
+    createdAt: time,
+    solvers: [{
+      name: req.user.name,
+      startedAt: time,
+      isSolved: false,
+      solvedAt: undefined
+    }],
+    discussions: []
+  }
+  req.app.locals.challenges.add(challenge);
+  const id = req.app.locals.challenges.generateNextId();
+  req.app.locals.users.addChallenge(req.user.name, id - 1);
+}
+
 module.exports = {
   serveHomepage,
   serveChallenges,
@@ -59,5 +80,6 @@ module.exports = {
   login,
   signup,
   findUser,
-  allow
+  allow,
+  createNewChallenge
 };
