@@ -67,6 +67,7 @@ app.locals.sessions = sessions;
 app.use(express.static('public', {index: false}))
 app.use(cookieParser());
 app.use(express.json())
+app.use(handlers.findUser);
 app.get('/', handlers.serveHomepage);
 app.post('/login', handlers.login);
 app.post('/signup', handlers.signup);
