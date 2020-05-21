@@ -75,7 +75,15 @@ const createNewChallenge = function(req, res) {
   req.app.locals.challenges.add(challenge);
   const id = req.app.locals.challenges.generateNextId();
   req.app.locals.users.addChallenge(req.user.name, id - 1);
-}
+  res.end();
+};
+
+const logout = function(req, res) {
+  if(!req.user) return res.status(404).send('You are not allowed');
+  const {session} = req.cookies;
+  delete req.app.locals.sessions[session];
+  res.clearCookie('session').redirect('/');
+};
 
 module.exports = {
   serveHomepage,
@@ -85,5 +93,6 @@ module.exports = {
   signup,
   findUser,
   allow,
-  createNewChallenge
+  createNewChallenge,
+  logout
 };

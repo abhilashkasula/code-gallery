@@ -65,6 +65,7 @@ app.use(handlers.findUser);
 app.get('/', handlers.serveHomepage);
 app.post('/login', handlers.login);
 app.post('/signup', handlers.signup);
+app.get('/logout', handlers.logout);
 app.use('/challenges', challengesRouter);
 
 module.exports = {app};
