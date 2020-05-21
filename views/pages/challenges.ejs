@@ -2,6 +2,8 @@
 <html lang="en">
   <head>
     <%- include('../partials/head') %>
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/challenges.css">
   </head>
   <body>
     <header>
@@ -17,16 +19,21 @@
       <div class="challenge">No Challenges Found</div>
       <% } %>
     </div>
-    <hr>
+    <hr />
     <div class="new-challenge">
       <h3 class="new-challenge-header">Create a new challenge</h3>
       <div>
-      <h3 class="challenge-labels">Title:</h3>
-      <input type="text" id="new-challenge-title" placeholder="Title">
-      <h3 class="challenge-labels">Description:</h3>
-      <textarea id="new-challenge-desc" cols="40" rows="10" placeholder="Description"></textarea>
-      <button id="new-challenge">Create New Challenge</button>
-    </div>
+        <h3 class="challenge-labels">Title:</h3>
+        <input type="text" id="new-challenge-title" placeholder="Title" />
+        <h3 class="challenge-labels">Description:</h3>
+        <textarea
+          id="new-challenge-desc"
+          cols="40"
+          rows="10"
+          placeholder="Description"
+        ></textarea>
+        <button id="new-challenge">Create New Challenge</button>
+      </div>
     </div>
   </body>
 </html>

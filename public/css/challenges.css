@@ -1,0 +1,77 @@
+
+.challenges {
+  display: flex;
+  margin-top: 0em;
+  justify-content: center;
+}
+
+.challenges-header {
+  text-align: center;
+  margin-top: 2em;
+  font-size: 2em;
+}
+
+.challenge {
+  font-size: 1.5em;
+  margin: 1em;
+}
+
+.challenge-desc {
+  display: flex;
+  justify-content: center;
+}
+
+.challenge-desc > p{
+  margin-top: 0;
+  text-align: center;
+  word-wrap: break-word;
+  line-height: 1.5em;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+#new-challenge {
+  display: block;
+  margin: 0 auto;
+  margin-top: 1em;
+  padding: 0.5em;
+  border-radius: 0.2em;
+  border: 1px solid;
+  font-weight: 900;
+  background: linear-gradient(rgb(19, 194, 19), rgb(37, 163, 37));
+  color: white;
+  cursor: pointer;
+  outline: none;
+}
+
+.new-challenge {
+  display: flex;
+  flex-direction: column;
+}
+
+.new-challenge > * {
+  margin: 0 auto;
+}
+
+#new-challenge-title, #new-challenge-desc {
+  padding: .5em;
+  margin-bottom: 0.8em;
+}
+
+hr {
+  margin: 2em  0 0;
+}
+
+.new-challenge-header {
+  text-align: center;
+  margin: 0;
+  font-size: 2em;
+  margin: 1em 0;
+}
+
+.challenge-labels {
+  margin-bottom: 0;
+  margin-top: 0.5em;
+}

@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <%- include('../partials/head') %>
-</head>
-<body>
-  <header>
-    <%- include('../partials/header') %>
-  </header>
-  <h1>Welcome to Code Gallery</h1>
-</body>
+  <head>
+    <%- include('../partials/head') %>
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/index.css">
+  </head>
+  <body>
+    <header>
+      <%- include('../partials/header') %>
+    </header>
+    <div class="challenges">
+      <% if(challenges.length) { challenges.forEach(challenge => { %>
+      <a href="/challenges/<%= challenge.id %>" class="challenges-header"> <%= challenge.title %> </a>
+      <% })} else { %>
+      <a href="#">No challenges found</a>
+      <% } %>
+    </div>
+  </body>
 </html>
