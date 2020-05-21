@@ -33,6 +33,12 @@ class Challenges {
     challenge.makeSolverSolved(name, time);
   }
 
+  generateNextId() {
+    const challenge = this.challenges[this.challenge.length - 1];
+    const id = (challenge && challenge.id) || 0;
+    return id + 1;
+  }
+
   static load(challengeList) {
     const challenges = new Challenges();
     challengeList.forEach(challenge => challenges.add(challenge));
