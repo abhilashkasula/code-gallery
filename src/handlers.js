@@ -27,6 +27,7 @@ const generateSessionId = generateSeq(0);
 const login = function (req, res) {
   const {username, password} = req.body;
   const {users} = req.app.locals;
+  console.log(users);
   const name = users.validate(username, password);
   if(!name) return res.json({isValidUser: false});
   const id = generateSessionId();
@@ -37,6 +38,8 @@ const login = function (req, res) {
 const signup = function (req, res) {
   const {username, password} = req.body;
   const isValidUser = req.app.locals.users.add(username, password, []);
+  const json = JSON.stringify(req.app.locals.users);
+  req.app.locals.db.set('code-gallery-users', json);
   res.json({isValidUser, dest: '/'});
 };
 
@@ -62,6 +65,7 @@ const allow = function(req, res, next) {
 
 const createNewChallenge = function(req, res) {
   const {title, description} = req.body;
+  const {challenges, users} = req.app.locals;
   const time = new Date();
   const challenge = {
     title,
@@ -76,9 +80,11 @@ const createNewChallenge = function(req, res) {
     }],
     discussions: []
   }
-  req.app.locals.challenges.add(challenge);
-  const id = req.app.locals.challenges.generateNextId();
-  req.app.locals.users.addChallenge(req.user.name, id - 1);
+  challenges.add(challenge);
+  const id = challenges.generateNextId();
+  users.addChallenge(req.user.name, id - 1);
+  const json = JSON.stringify(challenges);
+  req.app.locals.db.set('code-gallery-challenges', json);
   res.end();
 };
 

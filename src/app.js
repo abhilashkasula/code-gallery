@@ -1,4 +1,5 @@
 const express = require('express');
+const redis = require('redis');
 const cookieParser = require('cookie-parser');
 const handlers = require('./handlers');
 const Users = require('./models/users');
@@ -7,65 +8,29 @@ const {challengesRouter} = require('./routes/challenges');
 const {REDIS_URL} = require(`${__dirname}/../config.js`);
 
 const app = express();
+const client = redis.createClient(REDIS_URL);
+
+(() => {
+  client.get('code-gallery-users', (err, data) => {
+    app.locals.users = Users.load(JSON.parse(data || '[]'));
+  });
+
+  client.get('code-gallery-challenges', (err, data) => {
+    app.locals.challenges = Challenges.load(JSON.parse(data || '[]'));
+  });
+})();
+
+app.locals.sessions = {};
+app.locals.db = client;
 
 app.set('view engine', 'ejs');
-
-const users = Users.load([{
-  name: 'john',
-  password: '1234',
-  challenges: [1]
-}])
-
-const challenges = Challenges.load([
-  {
-    id: 1,
-    title: 'something',
-    description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iusto reprehenderit eos provident laboriosam recusandae temporibus magnam, illum adipisci voluptates, animi praesentium dicta debitis? Qui eius, provident eligendi accusantium repellat ab?',
-    createdBy: 'john',
-    createdAt: 'Thu May 21 2020 19:16:45 GMT+0530 (India Standard Time)',
-    solvers: [
-      {
-        name: 'raja',
-        startedAt: 'Thu May 21 2020 19:16:45 GMT+0530 (India Standard Time)',
-        isSolved: false,
-        solvedAt: undefined
-      }
-    ],
-    discussions: [
-      {
-        title: 'wrong input', 
-        comments: [
-          {
-            name: 'john', 
-            comment: 'some text'
-          },
-          {
-            name: 'john', 
-            comment: 'some more text'
-          }
-        ]
-      },
-      {
-        title: 'question didn\'t understand',
-        comments: []
-      }
-    ]
-  }
-]);
-
-const sessions = {};
-
-app.locals.users = users;
-app.locals.challenges = challenges;
-app.locals.sessions = sessions;
-
-app.use(express.static('public', {index: false}))
+app.use(express.static('public', {index: false}));
 app.use(cookieParser());
-app.use(express.json())
+app.use(express.json());
 app.use(handlers.findUser);
 app.get('/', handlers.serveHomepage);
-app.post('/login', handlers.hasFields('username', 'password'),handlers.login);
-app.post('/signup', handlers.hasFields('username', 'password'), handlers.signup);
+app.post('/login', handlers.hasFields('username', 'password'), handlers.login);
+app.post('/signup', handlers.hasFields('username', 'password'), handlers.signup );
 app.get('/logout', handlers.logout);
 app.use('/challenges', challengesRouter);
 app.use(handlers.serveNotFound);
