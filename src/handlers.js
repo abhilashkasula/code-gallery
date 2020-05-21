@@ -79,7 +79,7 @@ const createNewChallenge = function(req, res) {
 };
 
 const logout = function(req, res) {
-  if(!req.user) return res.status(404).send('You are not allowed');
+  if(!req.user) return res.status(404).send('You need to login first');
   const {session} = req.cookies;
   delete req.app.locals.sessions[session];
   res.clearCookie('session').redirect('/');
