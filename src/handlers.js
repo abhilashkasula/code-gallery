@@ -18,7 +18,7 @@ const serveChallenge = function (req, res) {
   const id = +req.url.split('/')[1];
   const challenge = req.app.locals.challenges.getChallenge(id);
   if (!challenge) return res.sendStatus(404);
-  res.render('pages/challenge', {user: {name: 'john'}, challenge});
+  res.render('pages/challenge', {user: req.user, challenge});
 };
 
 const generateSeq = num => () => ++num;
