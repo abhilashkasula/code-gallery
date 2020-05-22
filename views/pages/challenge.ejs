@@ -2,20 +2,24 @@
 <html lang="en">
   <head>
     <%- include('../partials/head') %>
-    <link rel="stylesheet" href="/css/navbar.css">
-    <link rel="stylesheet" href="/css/challenges.css">
+    <link rel="stylesheet" href="/css/navbar.css" />
+    <link rel="stylesheet" href="/css/challenges.css" />
   </head>
   <body>
     <header>
       <%- include('../partials/header') %>
     </header>
-    <h2 class="challenges-header underline">
-      <%= challenge.title %>
-    </h2>
-    <div class="challenge-desc">
-      <p><%= challenge.description%></p>
-    </div>
-    <div class="challenge-options">
+    <div class="container">
+      <h2 class="challenges-header underline">
+        <%= challenge.title %>
+      </h2>
+      <div class="challenge-desc">
+        <% challenge.description.split('\n').forEach(desc => { %>
+        <p><%= desc %></p>
+        <% }) %>
+        <!-- <p><%= challenge.description.replace(/\n/, '<br>') %></p> -->
+      </div>
+      <div class="challenge-options"></div>
     </div>
   </body>
 </html>
