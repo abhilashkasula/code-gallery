@@ -22,7 +22,11 @@ class Discussions {
   }
 
   toJSON() {
-    return this.discussions;
+    return this.getStatus();
+  }
+
+  getStatus() {
+    return this.discussions.map(discussion => discussion.getStatus());
   }
 
   static load(list) {

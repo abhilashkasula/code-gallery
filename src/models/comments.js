@@ -7,8 +7,14 @@ class Comments {
     this.comments.push({name, comment});
   }
 
+  getStatus() {
+    return this.comments.map(comment => {
+      return {name: comment.name, comment: comment.comment};
+    });
+  }
+
   toJSON() {
-    return this.comments;
+    return this.getStatus();
   }
 
   static load(commentList) {

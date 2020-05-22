@@ -2,7 +2,7 @@ const serveHomepage = function (req, res) {
   if(!req.user) return res.render('pages/login');
   const options = {
     user: req.user,
-    challenges: JSON.parse(JSON.stringify(req.app.locals.challenges))
+    challenges: req.app.locals.challenges.getStatus()
   }
   return res.render('pages/home', options);
 };
@@ -10,13 +10,13 @@ const serveHomepage = function (req, res) {
 const serveChallenges = function (req, res) {
   res.render('pages/challenges', {
     user: req.user,
-    challenges: JSON.parse(JSON.stringify(req.app.locals.challenges)),
+    challenges: req.app.locals.challenges.getStatus(),
   });
 };
 
 const serveChallenge = function (req, res) {
   const id = +req.url.split('/')[1];
-  const challenge = req.app.locals.challenges.getChallenge(id);
+  const challenge = req.app.locals.challenges.getChallengeStatus(id);
   if (!challenge) return res.sendStatus(404);
   res.render('pages/challenge', {user: req.user, challenge});
 };

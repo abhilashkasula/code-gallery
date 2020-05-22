@@ -40,8 +40,17 @@ class Challenges {
     return id + 1;
   }
 
+  getChallengeStatus(id) {
+    const challenge = this.getChallenge(id);
+    return challenge.getStatus();
+  }
+
+  getStatus(){
+    return this.challenges.map(challenge => challenge.getStatus());
+  }
+
   toJSON() {
-    return this.challenges;
+    return this.getStatus();
   }
 
   static load(challengeList) {

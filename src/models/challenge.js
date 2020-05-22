@@ -31,6 +31,18 @@ class Challenge {
   makeSolverSolved(name, time) {
     this.solvers.makeAsSolved(name, time);
   }
+
+  getStatus() {
+    return {
+      id: this.id,
+      title: this.title,
+      description: this.description,
+      createdBy: this.createdBy,
+      createdAt: this.createdAt,
+      solvers: this.solvers.getStatus(),
+      discussions: this.discussions.getStatus()
+    }
+  }
 }
 
 module.exports = Challenge;

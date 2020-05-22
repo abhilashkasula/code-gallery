@@ -11,6 +11,14 @@ class Discussion {
     return this.id;
   }
 
+  getStatus() {
+    return {
+      id: this.id,
+      title: this.title,
+      comments: this.comments.getStatus()
+    }
+  }
+
   addComment(name, comment) {
     this.comments.add(name, comment);
   }

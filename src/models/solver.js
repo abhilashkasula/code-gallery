@@ -9,6 +9,15 @@ class Solver {
   getName() {
     return this.name;
   }
+
+  getSolverStatus() {
+    return {
+      name: this.name,
+      startedAt: this.startedAt,
+      isSolved: this.isSolved,
+      solvedAt: this.solvedAt
+    }
+  }
   
   markAsComplete(time) {
     this.isSolved = true;

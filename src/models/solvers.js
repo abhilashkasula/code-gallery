@@ -15,7 +15,11 @@ class Solvers {
   }
 
   toJSON() {
-    return this.solvers;
+    return this.getStatus();
+  }
+
+  getStatus() {
+    return this.solvers.map(solver => solver.getSolverStatus());
   }
 
   static load(list) {
