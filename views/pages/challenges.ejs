@@ -13,7 +13,6 @@
     <h3 class="challenges-header">Challenges you picked up</h3>
     <div class="challenges">
       <div>
-        <%console.log(user, challenges)%>
       <% if (user.challenges.length) { %> <% user.challenges.forEach(id => { %>
       <a class="challenge" href="/challenges/<%= id %>">
         <%= challenges.find(challenge => challenge.id === id).title %>
