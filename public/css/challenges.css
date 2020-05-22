@@ -27,21 +27,6 @@
   text-align: center;
 }
 
-.challenge-desc {
-  display: flex;
-  flex-direction: column;
-}
-
-.challenge-desc > p{
-  margin: 0;
-  word-wrap: break-word;
-  line-height: 1.5em;
-}
-
-.underline {
-  text-decoration: underline;
-}
-
 #new-challenge {
   display: block;
   margin: 0 auto;
@@ -90,12 +75,6 @@ hr {
 
 .challenge:hover {
   background: #cecbcb;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .not-found {

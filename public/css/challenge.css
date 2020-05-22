@@ -1,0 +1,45 @@
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.challenges-header {
+  text-align: center;
+  margin-top: 2em;
+  font-size: 2em;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.challenge-desc {
+  display: flex;
+  flex-direction: column;
+}
+
+.challenge-desc > p{
+  margin: 0;
+  word-wrap: break-word;
+  line-height: 1.5em;
+  font-size: 1.4em;
+}
+
+.challenge-options {
+  margin-top: 10em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.button-action {
+  padding: 0.5em 2.2em;
+  background: linear-gradient(rgb(19, 194, 19), rgb(37, 163, 37));
+  color: white;
+  font-weight: 600;
+  font-size: 1.1em;
+  border-radius: 0.2em;
+  cursor: pointer;
+}

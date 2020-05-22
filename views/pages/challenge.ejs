@@ -3,7 +3,8 @@
   <head>
     <%- include('../partials/head') %>
     <link rel="stylesheet" href="/css/navbar.css" />
-    <link rel="stylesheet" href="/css/challenges.css" />
+    <link rel="stylesheet" href="/css/challenge.css" />
+    <script src="/js/challenge.js"></script>
   </head>
   <body>
     <header>
@@ -18,7 +19,13 @@
         <p><%= desc %></p>
         <% }) %>
       </div>
-      <div class="challenge-options"></div>
+    </div>
+    <div class="challenge-options">
+      <% if(user.challenges.includes(challenge.id)){ %>
+      <div class="button-action">Submit as completed</div>
+      <% } else { %>
+      <div class="button-action">Pick this challenge</div>
+      <% } %>
     </div>
   </body>
 </html>
