@@ -46,7 +46,7 @@ const findUser = function (req, res, next) {
   const {session} = req.cookies;
   const {users, sessions} = req.app.locals;
   if (session && sessions[session]) {
-    req.user = users.getUser(sessions[session]);
+    req.user = users.getUserStatus(sessions[session]);
   }
   next();
 };
@@ -112,6 +112,27 @@ const hasFields = function(...fields) {
   }
 };
 
+const pickChallenge = function(req, res) {
+  const {id} = req.body;
+  const {challenges, users, db} = req.app.locals;
+  const [viewingId] = req.headers.referer.split('/').slice(-1);
+  const msg = 'You are trying wrong. Make sure everything is right.';
+  if(id !== viewingId || req.user.challenges.includes(+id)) {
+    return res.status(400).json({err:true, msg});
+  }
+  const solver = {
+    name: req.user.name,
+    startedAt: new Date(),
+    isSolved: false,
+    solvedAt: undefined
+  }
+  challenges.addSolver(+id, solver);
+  users.addChallenge(req.user.name, +id);
+  db.set('code-gallery-users', JSON.stringify(users));
+  db.set('code-gallery-challenges', JSON.stringify(challenges));
+  res.json({err:false});
+};
+
 module.exports = {
   serveHomepage,
   serveChallenges,
@@ -123,5 +144,6 @@ module.exports = {
   createNewChallenge,
   logout,
   serveNotFound,
-  hasFields
+  hasFields,
+  pickChallenge
 };

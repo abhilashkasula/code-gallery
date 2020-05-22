@@ -7,6 +7,10 @@ class Discussion {
     this.comments = Comments.load(comments);
   }
 
+  getId() {
+    return this.id;
+  }
+
   addComment(name, comment) {
     this.comments.add(name, comment);
   }

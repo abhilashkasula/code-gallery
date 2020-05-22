@@ -10,7 +10,7 @@ class Solvers {
   }
 
   makeAsSolved(name, time) {
-    const solver = this.solvers.find(solver => solver.name === name);
+    const solver = this.solvers.find(solver => solver.getName() === name);
     solver.makeAsComplete(time);
   }
 

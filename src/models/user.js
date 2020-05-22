@@ -19,6 +19,17 @@ class User {
   getChallenges() {
     return this.challenges.map(id => id);
   }
+
+  getName() {
+    return this.name;
+  }
+
+  getStatus() {
+    return {
+      name: this.name,
+      challenges: this.getChallenges()
+    };
+  }
 }
 
 module.exports = User;

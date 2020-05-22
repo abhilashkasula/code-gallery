@@ -16,6 +16,10 @@ class Challenge {
     this.discussions.add(title, comments);
   }
 
+  getId() {
+    return this.id;
+  }
+
   addComment(discussionId, name, comment) {
     this.discussions.addComment(discussionId, name, comment);
   }

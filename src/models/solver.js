@@ -6,6 +6,10 @@ class Solver {
     this.solvedAt = solvedAt;
   }
 
+  getName() {
+    return this.name;
+  }
+  
   markAsComplete(time) {
     this.isSolved = true;
     this.solvedAt = time;

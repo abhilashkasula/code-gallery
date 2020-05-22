@@ -28,7 +28,6 @@
 }
 
 .challenge-options {
-  margin-top: 10em;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -42,4 +41,17 @@
   font-size: 1.1em;
   border-radius: 0.2em;
   cursor: pointer;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+#err-msg {
+  margin-top: 10em;
+}
+
+.err {
+  color: red;
+  text-align: center;
 }

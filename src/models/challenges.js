@@ -11,7 +11,7 @@ class Challenges {
   }
 
   getChallenge(id) {
-    return this.challenges.find(challenge => challenge.id === id);
+    return this.challenges.find(challenge => challenge.getId() === +id);
   }
 
   addDiscussion(id, title, comments) {
@@ -36,7 +36,7 @@ class Challenges {
 
   generateNextId() {
     const challenge = this.challenges[this.challenges.length - 1];
-    const id = (challenge && challenge.id) || 0;
+    const id = (challenge && challenge.getId()) || 0;
     return id + 1;
   }
 

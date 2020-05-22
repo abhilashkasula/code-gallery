@@ -20,12 +20,14 @@
         <% }) %>
       </div>
     </div>
+    <p id="err-msg" class="err hide">some err</p>
     <div class="challenge-options">
       <% if(user.challenges.includes(challenge.id)){ %>
-      <div class="button-action">Submit as completed</div>
+      <div class="button-action" id="action" value="submit">Submit as completed</div>
       <% } else { %>
-      <div class="button-action">Pick this challenge</div>
+      <div class="button-action" id="action" value="pickup">Pick this challenge</div>
       <% } %>
+      <input type="hidden" id="secret" value="<%= challenge.id %>">
     </div>
   </body>
 </html>

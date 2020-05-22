@@ -11,13 +11,13 @@ class Discussions {
   }
 
   addComment(id, name, comment) {
-    const discussion = this.discussions.find(discussion => discussion.id === id);
+    const discussion = this.discussions.find(discussion => discussion.getId() === id);
     discussion.addComment(name, comment);
   }
 
   generateNextId() {
     const discussion = this.discussions[this.discussions.length - 1];
-    const id = (discussion && discussion.id) || 0;
+    const id = (discussion && discussion.getId()) || 0;
     return id + 1;
   }
 

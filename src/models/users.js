@@ -6,7 +6,7 @@ class Users{
   }
 
   getUser(name) {
-    return this.users.find(user => user.name === name);
+    return this.users.find(user => user.getName() === name);
   }
   
   add(name, password, challenges) {
@@ -29,6 +29,11 @@ class Users{
 
   toJSON() {
     return this.users;
+  }
+
+  getUserStatus(name) {
+    const user = this.getUser(name);
+    return user.getStatus();
   }
 
   static load(userList) {
