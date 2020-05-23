@@ -3,9 +3,9 @@ const swap = function(elem1, elem2) {
   document.querySelector(`#${elem2}`).classList.add('hide-display');
 }
 
-const showErr = function({isValidUser, dest}, id) {
+const showErr = function({isValidUser}, id) {
   if(isValidUser) {
-    return location.replace(dest);
+    return location.reload();
   }
   document.querySelector(`#${id}`).classList.remove('hide');
   setTimeout(() => document.querySelector(`#${id}`).classList.add('hide'), 3000);

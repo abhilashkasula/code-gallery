@@ -1,5 +1,5 @@
 const serveHomepage = function (req, res) {
-  if(!req.user) return res.render('pages/login');
+  if(!req.user) return res.render('pages/login', {msg: ''});
   const options = {
     user: req.user,
     challenges: req.app.locals.challenges.getStatus()
@@ -31,7 +31,7 @@ const login = function (req, res) {
   if(!name) return res.json({isValidUser: false});
   const id = generateSessionId();
   req.app.locals.sessions[id] = name;
-  res.cookie('session', id).json({isValidUser: true, dest: '/'});
+  res.cookie('session', id).json({isValidUser: true});
 };
 
 const signup = function (req, res) {
@@ -39,7 +39,7 @@ const signup = function (req, res) {
   const isValidUser = req.app.locals.users.add(username.toLowerCase(), password, []);
   const json = JSON.stringify(req.app.locals.users);
   req.app.locals.db.set('code-gallery-users', json);
-  res.json({isValidUser, dest: '/'});
+  res.json({isValidUser});
 };
 
 const findUser = function (req, res, next) {
@@ -55,11 +55,8 @@ const allow = function(req, res, next) {
   if(req.user) {
     return next();
   }
-  return res.status(400).render('pages/not_found', {
-    status: 400,
-    title: 'You\'re Not Allowed',
-    message: 'Please login to continue'
-  });
+  res.status(404).render('pages/login',
+    {msg: 'You are\'nt logged in\nPlease login to look at the challenges'});
 }
 
 const createNewChallenge = function(req, res) {

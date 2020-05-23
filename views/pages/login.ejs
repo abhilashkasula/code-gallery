@@ -7,6 +7,9 @@
   </head>
   <body>
     <div class="title">Code Gallery</div>
+    <% msg.split('\n').forEach(m => { %>
+    <h3 id="msg"><%= m %></h3>
+    <% }); %>
     <div class="container" id="login-container">
       <h2>Login to continue</h2>
       <div class="action">
