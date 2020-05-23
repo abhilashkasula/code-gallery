@@ -49,11 +49,91 @@
   visibility: hidden;
 }
 
-#err-msg {
-  margin-top: 10em;
-}
-
 .err {
   color: red;
   text-align: center;
+}
+
+.discussions-container {
+  box-shadow: 0px 0px 10px gainsboro inset;
+  border-radius: 5px;
+  margin: 0 2.5em;
+  padding: 1em;
+  margin-top: 10em;
+}
+
+.new-discussion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2.5em;
+}
+
+.comment {
+  background-color: gainsboro;
+  padding: 0.7em;
+  border-radius: 7px;
+  margin: 0.2em;
+}
+
+.comment-text, .posted-by {
+  margin: 0;
+}
+
+.comment-text {
+  margin: 1px;
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 1.8em;
+}
+
+.comments-container {
+  border: 1px solid;
+  border-radius: 6px;
+}
+
+.hide-display {
+  display: none;
+}
+
+.discussions-length {
+  font-weight: 100;
+  font-size: 0.7em;
+}
+
+.discussions-container > .header {
+  margin-top: 0;
+  text-align: center;
+}
+
+.discussion-title {
+  text-align: center;
+  cursor: pointer;
+  margin-bottom: 0;
+}
+
+.comments-options {
+  display: flex;
+  justify-content: space-between;
+}
+
+.comments-options > input {
+  width: 100%;
+  margin: 0.4em 0 0.4em 0.4em;
+  padding-left: 0.7em;
+  font-size: 1.1em;
+}
+
+.comments-options > button, #discussion-create {
+  width: 15em;
+  background: linear-gradient(rgb(19, 194, 19), rgb(37, 163, 37));
+  color: white;
+  font-weight: 600;
+  padding: 0.6em 0;
+  border-radius: 4px;
+  margin: 0.4em;
 }

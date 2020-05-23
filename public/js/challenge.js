@@ -17,7 +17,17 @@ const performAction = function() {
 
 const addListeners = function() {
   const actionButton = document.querySelector('#action');
+  const discussions = Array.from(document.querySelectorAll('.discussion-title'));
   actionButton && actionButton.addEventListener('click', performAction);
+  discussions.forEach(discussion => {
+    discussion.addEventListener('click', () => {
+      const target = event.target.nextElementSibling;
+      if(target.classList.contains('hide-display')) {
+        return target.classList.remove('hide-display');
+      }
+      target.classList.add('hide-display');
+    });
+  });
 }
 
 window.onload = addListeners;
