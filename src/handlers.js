@@ -64,7 +64,7 @@ const allow = function(req, res, next) {
 
 const createNewChallenge = function(req, res) {
   const {title, description} = req.body;
-  const {challenges, users} = req.app.locals;
+  const {challenges, users, db} = req.app.locals;
   const time = new Date();
   const challenge = {
     title,
@@ -82,8 +82,8 @@ const createNewChallenge = function(req, res) {
   challenges.add(challenge);
   const id = challenges.generateNextId();
   users.addChallenge(req.user.name, id - 1);
-  const json = JSON.stringify(challenges);
-  req.app.locals.db.set('code-gallery-challenges', json);
+  db.set('code-gallery-challenges', JSON.stringify(challenges));
+  db.set('code-gallery-users', JSON.stringify(users));
   res.end();
 };
 
