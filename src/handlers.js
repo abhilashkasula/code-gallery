@@ -144,7 +144,7 @@ const createDiscussion = function(req, res) {
   if(id !== viewingId || !req.user.challenges.includes(+id)) {
     return serveErr(req, res);
   }
-  challenges.addDiscussion(+id, title, [comment]);
+  challenges.addDiscussion(+id, title, [{name: req.user.name, comment}]);
   db.set('code-gallery-challenges', JSON.stringify(challenges));
   res.json({err: false});
 };

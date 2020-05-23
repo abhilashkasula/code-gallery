@@ -33,6 +33,7 @@
           <h3 class="discussion-title"><%= discussion.title %></h3>
           <div class="comments-container hide-display">
             <div class="comments">
+              <% console.log(discussion) %>
               <% discussion.comments.forEach(comment => { %>
               <div class="comment">
                 <h5 class="posted-by"><%= comment.name %></h5>
