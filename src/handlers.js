@@ -27,7 +27,7 @@ const generateSessionId = generateSeq(0);
 const login = function (req, res) {
   const {username, password} = req.body;
   const {users} = req.app.locals;
-  const name = users.validate(username, password);
+  const name = users.validate(username.toLowerCase(), password);
   if(!name) return res.json({isValidUser: false});
   const id = generateSessionId();
   req.app.locals.sessions[id] = name;
@@ -36,7 +36,7 @@ const login = function (req, res) {
 
 const signup = function (req, res) {
   const {username, password} = req.body;
-  const isValidUser = req.app.locals.users.add(username, password, []);
+  const isValidUser = req.app.locals.users.add(username.toLowerCase(), password, []);
   const json = JSON.stringify(req.app.locals.users);
   req.app.locals.db.set('code-gallery-users', json);
   res.json({isValidUser, dest: '/'});
