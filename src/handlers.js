@@ -56,7 +56,7 @@ const allow = function(req, res, next) {
     return next();
   }
   res.status(404).render('pages/login',
-    {msg: 'You are\'nt logged in\nPlease login to look at the challenges'});
+    {msg: 'You aren\'t logged in\nPlease login to look at the challenges'});
 }
 
 const createNewChallenge = function(req, res) {
