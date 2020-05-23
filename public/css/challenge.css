@@ -70,6 +70,19 @@
 }
 
 .comment {
+ display: flex;
+ flex-direction: column;
+}
+
+.them {
+  align-self: flex-start;
+}
+
+.you {
+  align-self: flex-end;
+}
+
+.comment > div {
   background-color: gainsboro;
   padding: 0.7em;
   border-radius: 7px;
@@ -85,9 +98,9 @@
 }
 
 .comments {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-end; */
   padding: 1.8em;
 }
 

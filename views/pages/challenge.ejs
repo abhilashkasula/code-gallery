@@ -38,8 +38,10 @@
             <div class="comments">
               <% discussion.comments.forEach(comment => { %>
               <div class="comment">
-                <h5 class="posted-by"><%= comment.name %></h5>
-                <p class="comment-text"><%= comment.comment %></p>
+                <div class="<%= user.name === comment.name ? 'you' : 'them' %>">
+                  <h5 class="posted-by"><%= comment.name %></h5>
+                  <p class="comment-text"><%= comment.comment %></p>
+                </div>
               </div>
               <% }) %>
             </div>
