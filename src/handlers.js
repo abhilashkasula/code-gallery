@@ -112,13 +112,17 @@ const hasFields = function(...fields) {
   }
 };
 
+const serveErr = function(req, res) {
+  const msg = 'You are trying wrong. Make sure everything is right.';
+  res.status(400).json({err: true, msg});
+};
+
 const pickChallenge = function(req, res) {
   const {id} = req.body;
   const {challenges, users, db} = req.app.locals;
   const [viewingId] = req.headers.referer.split('/').slice(-1);
-  const msg = 'You are trying wrong. Make sure everything is right.';
   if(id !== viewingId || req.user.challenges.includes(+id)) {
-    return res.status(400).json({err:true, msg});
+    return serveErr(req, res);
   }
   const solver = {
     name: req.user.name,
@@ -133,6 +137,18 @@ const pickChallenge = function(req, res) {
   res.json({err:false});
 };
 
+const createDiscussion = function(req, res) {
+  const {title, comment, id} = req.body;
+  const {challenges, db} = req.app.locals;
+  const [viewingId] = req.headers.referer.split('/').slice(-1);
+  if(id !== viewingId || !req.user.challenges.includes(+id)) {
+    return serveErr(req, res);
+  }
+  challenges.addDiscussion(+id, title, [comment]);
+  db.set('code-gallery-challenges', JSON.stringify(challenges));
+  res.json({err: false});
+};
+
 module.exports = {
   serveHomepage,
   serveChallenges,
@@ -145,5 +161,6 @@ module.exports = {
   logout,
   serveNotFound,
   hasFields,
-  pickChallenge
+  pickChallenge,
+  createDiscussion
 };

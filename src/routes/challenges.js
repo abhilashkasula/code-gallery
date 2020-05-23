@@ -8,5 +8,8 @@ challengesRouter.get('/', handlers.serveChallenges);
 challengesRouter.get(/\/[0-9]{1,}/, handlers.serveChallenge);
 challengesRouter.post('/new', handlers.hasFields('title', 'description'), handlers.createNewChallenge);
 challengesRouter.post('/pickup', handlers.hasFields('id'), handlers.pickChallenge);
+challengesRouter.post('/newDiscussion',
+  handlers.hasFields('title', 'comment', 'id'),
+  handlers.createDiscussion);
 
 module.exports = {challengesRouter};
