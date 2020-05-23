@@ -11,5 +11,8 @@ challengesRouter.post('/pickup', handlers.hasFields('id'), handlers.pickChalleng
 challengesRouter.post('/newDiscussion',
   handlers.hasFields('title', 'comment', 'id'),
   handlers.createDiscussion);
+challengesRouter.post('/addComment', 
+  handlers.hasFields('comment', 'discussionId', 'challengeId'),
+  handlers.addComment);
 
 module.exports = {challengesRouter};

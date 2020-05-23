@@ -31,9 +31,11 @@
         <% challenge.discussions.forEach(discussion => { %>
         <div class="discussion">
           <h3 class="discussion-title"><%= discussion.title %></h3>
-          <div class="comments-container hide-display">
+          <div
+            class="comments-container hide-display"
+            id="discussion<%= discussion.id %>"
+          >
             <div class="comments">
-              <% console.log(discussion) %>
               <% discussion.comments.forEach(comment => { %>
               <div class="comment">
                 <h5 class="posted-by"><%= comment.name %></h5>
@@ -42,8 +44,10 @@
               <% }) %>
             </div>
             <div class="comments-options">
-              <input type="text" placeholder="comment..">
-              <button value="<%= discussion.id %>">Comment</button>
+              <input type="text" placeholder="comment.." />
+              <button value="<%= discussion.id %>" class="comment-action">
+                Comment
+              </button>
             </div>
           </div>
         </div>
@@ -55,10 +59,11 @@
         <button id="discussion-create">New Discussion</button>
       </div>
     </div>
+    <% } %>
 
     <p id="err-msg" class="err hide">some err</p>
     <div class="challenge-options">
-      <% } %> <% if(user.challenges.includes(challenge.id)){ %>
+      <% if(user.challenges.includes(challenge.id)){ %>
       <div class="button-action" id="action" value="submit">
         Submit as completed
       </div>

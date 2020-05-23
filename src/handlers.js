@@ -149,6 +149,20 @@ const createDiscussion = function(req, res) {
   res.json({err: false});
 };
 
+const addComment = function(req, res) {
+  const {comment, discussionId, challengeId} = req.body;
+  const {challenges, db} = req.app.locals;
+  const [viewingId] = req.headers.referer.split('/').slice(-1);
+  if(challengeId !== viewingId || !req.user.challenges.includes(+challengeId)) {
+    return serveErr(req, res);
+  }
+  challenges.addComment(+challengeId, +discussionId, req.user.name, comment);
+  db.set('code-gallery-challenges', JSON.stringify(challenges));
+  const challenge = challenges.getChallengeStatus(+challengeId)
+  const discussion = challenge.discussions.find(d => d.id === +discussionId);
+  res.json({err: false, discussion});
+};
+
 module.exports = {
   serveHomepage,
   serveChallenges,
@@ -162,5 +176,6 @@ module.exports = {
   serveNotFound,
   hasFields,
   pickChallenge,
-  createDiscussion
+  createDiscussion,
+  addComment
 };
