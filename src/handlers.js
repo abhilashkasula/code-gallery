@@ -22,7 +22,7 @@ const serveChallenge = function (req, res) {
 };
 
 const generateSeq = num => () => ++num;
-const generateSessionId = generateSeq(0);
+const generateSessionId = generateSeq(new Date().getTime() * 1);
 
 const login = function (req, res) {
   const {username, password} = req.body;
