@@ -41,14 +41,16 @@ const createDiscussion = function() {
     .then(showErr);
 };
 
-const generateComment = function(comment) {
+const generateComment = function(comment, name) {
   return `<div class="comment">
+  <div class="${name === comment.name ? 'you' : 'them'}">
     <h5 class="posted-by">${comment.name}</h5>
     <p class="comment-text">${comment.comment}</p>
+    </div>
   </div>`
 };
 
-const drawDiscussion = function({err, msg, discussion}) {
+const drawDiscussion = function({err, msg, discussion, name}) {
   if(err) {
     const message = document.querySelector('#err-msg');
     message.innerText = msg;
@@ -56,7 +58,7 @@ const drawDiscussion = function({err, msg, discussion}) {
     return setTimeout(() => message.classList.add('hide'), 3000);
   }
   const comments = document.querySelector(`#discussion${discussion.id}`).children[0];
-  comments.innerHTML = discussion.comments.map(generateComment).join('\n');
+  comments.innerHTML = discussion.comments.map(c => generateComment(c, name)).join('\n');
 };
 
 const addComment = function() {

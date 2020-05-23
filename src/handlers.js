@@ -160,7 +160,7 @@ const addComment = function(req, res) {
   db.set('code-gallery-challenges', JSON.stringify(challenges));
   const challenge = challenges.getChallengeStatus(+challengeId)
   const discussion = challenge.discussions.find(d => d.id === +discussionId);
-  res.json({err: false, discussion});
+  res.json({err: false, discussion, name: req.user.name});
 };
 
 module.exports = {
