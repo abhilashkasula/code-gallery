@@ -54,8 +54,8 @@
               <% }) %>
             </div>
             <div class="comments-options">
-              <input type="text" placeholder="comment.." />
-              <button value="<%= discussion.id %>" class="comment-action">
+              <input type="text" discussion="<%= discussion.id %>" class="comment-box" placeholder="comment.." />
+              <button discussion="<%= discussion.id %>" class="comment-action">
                 Comment
               </button>
             </div>

@@ -62,9 +62,9 @@ const drawDiscussion = function({err, msg, discussion, name}) {
 };
 
 const addComment = function() {
-  const elem = event.target.previousElementSibling;
+  const elem = event.target.previousElementSibling || event.target;
   const comment = elem.value.trim();
-  const discussionId = event.target.getAttribute('value');
+  const discussionId = event.target.getAttribute('discussion');
   const challengeId = document.querySelector('#secret').value;
   if(!comment || !discussionId || !challengeId) return;
   const body = getOptions({comment, discussionId, challengeId});
@@ -72,15 +72,21 @@ const addComment = function() {
   fetch('addComment', body).then(res => res.json()).then(drawDiscussion);
 };
 
+const checkForEnter = function() {
+  event.keyCode === 13 && addComment();
+};
+
 const addListeners = function() {
   const actionButton = document.querySelector('#action');
   const discussions = Array.from(document.querySelectorAll('.discussion-title'));
   const createButton = document.querySelector('#discussion-create');
   const comments = Array.from(document.querySelectorAll('.comment-action'));
+  const commentBoxes = Array.from(document.querySelectorAll('.comment-box'));
   actionButton && actionButton.addEventListener('click', performAction);
   discussions.forEach(d => d.addEventListener('click', toggleDiscussions));
   createButton.addEventListener('click', createDiscussion);
   comments.forEach(c => c.addEventListener('click', addComment));
+  commentBoxes.forEach(c => c.addEventListener('keydown', checkForEnter))
 };
 
 window.onload = addListeners;
