@@ -18,8 +18,12 @@
 }
 
 .navbar > .title {
-  font-size: 2vw;
+  font-size: 2em;
   font-weight: 900;
+}
+
+.navbar > .title > a {
+  color: black;
 }
 
 .navbar > ul > li {
@@ -35,11 +39,15 @@
 }
 
 .navbar > ul > li > a {
-  font-size: 1.2vw;
+  font-size: 1.2em;
   font-weight: 600;
+  color: rgb(63, 62, 62);
 }
 
 a {
   text-decoration: none;
+}
+
+.navbar > ul > li > a:hover {
   color: black;
 }
