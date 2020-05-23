@@ -15,17 +15,20 @@
         <%= challenge.title %>
       </h2>
       <div class="challenge-desc">
-        <% challenge.description.split('\n').forEach(desc => { %>
+        <% challenge.description.split('\n').forEach(desc => { %> <% if(desc) {
+        %>
         <p><%= desc %></p>
-        <% }) %>
+        <% } else { %>
+        <br />
+        <% }}) %>
       </div>
       <div class="challenge-details">
-        Challenge created by: 
+        Challenge created by:
         <span class="challenge-created-name">
           <%= challenge.createdBy %>
         </span>
-         at <%= challenge.createdAt.toLocaleTimeString() %>
-         on <%= challenge.createdAt.toLocaleDateString() %>
+        at <%= challenge.createdAt.toLocaleTimeString() %> on <%=
+        challenge.createdAt.toLocaleDateString() %>
       </div>
     </div>
     <% if(user.challenges.includes(challenge.id)){ %>
@@ -54,7 +57,12 @@
               <% }) %>
             </div>
             <div class="comments-options">
-              <input type="text" discussion="<%= discussion.id %>" class="comment-box" placeholder="comment.." />
+              <input
+                type="text"
+                discussion="<%= discussion.id %>"
+                class="comment-box"
+                placeholder="comment.."
+              />
               <button discussion="<%= discussion.id %>" class="comment-action">
                 Comment
               </button>
