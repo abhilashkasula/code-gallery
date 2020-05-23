@@ -59,7 +59,7 @@
   border-radius: 5px;
   margin: 0 2.5em;
   padding: 1em;
-  margin-top: 10em;
+  margin-top: 2em;
 }
 
 .new-discussion {
@@ -149,4 +149,12 @@
   padding: 0.6em 0;
   border-radius: 4px;
   margin: 0.4em;
+}
+
+.challenge-created-name {
+  font-weight: 600;
+}
+
+.challenge-details {
+  margin-top: 8em;
 }

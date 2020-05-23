@@ -19,6 +19,14 @@
         <p><%= desc %></p>
         <% }) %>
       </div>
+      <div class="challenge-details">
+        Challenge created by: 
+        <span class="challenge-created-name">
+          <%= challenge.createdBy %>
+        </span>
+         at <%= challenge.createdAt.toLocaleTimeString() %>
+         on <%= challenge.createdAt.toLocaleDateString() %>
+      </div>
     </div>
     <% if(user.challenges.includes(challenge.id)){ %>
     <div class="discussions-container">
