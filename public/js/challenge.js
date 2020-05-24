@@ -61,6 +61,7 @@ const drawDiscussion = function({err, msg, discussion, name}) {
   }
   const comments = document.querySelector(`#discussion${discussion.id}`).children[0];
   comments.innerHTML = discussion.comments.map(c => generateComment(c, name)).join('\n');
+  comments.scrollTop = comments.scrollHeight;
 };
 
 const addComment = function() {
