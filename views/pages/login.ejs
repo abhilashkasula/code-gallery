@@ -32,6 +32,8 @@
       <h2>Signup to continue</h2>
       <div class="action">
         <label class="wrong hide" id="wrong-name">Username already exists</label>
+        <label class="wrong hide" id="name-pattern1">Username should include only</label>
+        <label class="wrong hide" id="name-pattern2">lowercase, uppercase or '_'</label>
         <div class="credentials-container">
           <label for="username">Username:</label>
           <input type="text" class="credentials" id="signup-username" />
@@ -44,6 +46,8 @@
           <label for="password">Confirm:&nbsp;</label>
           <input type="password" class="credentials" id="signup-confirm" />
         </div>
+        <label class="wrong hide" id="pattern-err-1">Password should only include uppercase</label>
+        <label class="wrong hide" id="pattern-err-2">lowercase, letters, numbers or @_*</label>
         <label class="wrong hide" id="length-err">Password must be 8 characters</label>
         <label class="wrong hide" id="match-err">Password didn't match</label>
         <button id="signup" class="button green"> Signup </button>

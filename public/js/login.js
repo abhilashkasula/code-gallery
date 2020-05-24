@@ -35,6 +35,14 @@ const signup = function() {
   const confirm = document.querySelector('#signup-confirm').value.trim();
   if(!username || !password) return;
   if(password.length < 8) return showErr({isValidUser: false}, 'length-err');
+  if(!username.match(/^[a-zA-Z0-9_]+$/)) {
+    const isValidUser = false;
+    return showErr({isValidUser}, 'name-pattern1') || showErr({isValidUser}, 'name-pattern2');
+  }
+  if(!password.match(/^[a-zA-Z0-9@_\*]+$/)) {
+    const isValidUser = false;
+    return showErr({isValidUser}, 'pattern-err-1') || showErr({isValidUser}, 'pattern-err-2');
+  }
   if(password !== confirm) return showErr({isValidUser: false}, 'match-err');
 
   fetch('/signup', getOptions({username, password}))
