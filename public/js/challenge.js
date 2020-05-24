@@ -25,7 +25,10 @@ const performAction = function() {
 const toggleDiscussions = function() {
   const target = event.target.nextElementSibling;
   if(target.classList.contains('hide-display')) {
-    return target.classList.remove('hide-display');
+    target.classList.remove('hide-display');
+    const comments = target.children[0];
+    comments.scrollTop = comments.scrollHeight;
+    return;
   }
   target.classList.add('hide-display');
 };
