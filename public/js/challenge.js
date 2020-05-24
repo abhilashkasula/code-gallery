@@ -24,13 +24,12 @@ const performAction = function() {
 
 const toggleDiscussions = function() {
   const target = event.target.nextElementSibling;
-  if(target.classList.contains('hide-display')) {
-    target.classList.remove('hide-display');
-    const comments = target.children[0];
-    comments.scrollTop = comments.scrollHeight;
-    return;
+  if(!target.classList.contains('hide-display')) {
+    return target.classList.add('hide-display');
   }
-  target.classList.add('hide-display');
+  target.classList.remove('hide-display');
+  const comments = target.children[0];
+  comments.scrollTop = comments.scrollHeight;
 };
 
 const createDiscussion = function() {
