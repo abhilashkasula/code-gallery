@@ -156,6 +156,7 @@
 
 .challenge-details {
   margin-top: 8em;
+  text-align: center;
 }
 
 input {
@@ -183,6 +184,7 @@ input {
 .solvers {
   margin-top: 1.5em;
   display: flex;
+  /* text-align: center; */
 }
 
 .solvers > .label {
