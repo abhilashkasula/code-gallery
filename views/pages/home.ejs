@@ -14,7 +14,7 @@
       <% if(challenges.length) { challenges.forEach(challenge => { %>
       <a href="/challenges/<%= challenge.id %>" class="challenges-header"> <%= challenge.title %> </a>
       <% })} else { %>
-      <a href="#">No challenges found</a>
+      <div class="not-found">No challenges found</div>
       <% } %>
     </div>
   </body>
