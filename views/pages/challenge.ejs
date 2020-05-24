@@ -23,12 +23,26 @@
         <% }}) %>
       </div>
       <div class="challenge-details">
-        Challenge created by:
-        <span class="challenge-created-name">
-          <%= challenge.createdBy %>
-        </span>
-        on <%= challenge.createdAt.toDateString() %> at <%=
-        challenge.createdAt.toLocaleTimeString() %>
+        <div>
+          Challenge created by:
+          <span class="challenge-created-name">
+            <%= challenge.createdBy %>
+          </span>
+          on <%= challenge.createdAt.toDateString() %> at <%=
+          challenge.createdAt.toLocaleTimeString() %>
+        </div>
+        <div class="solvers">
+          <label class="label"> Challenge picked up by: </label>
+          <div class="picked-people">
+            <% challenge.solvers.forEach(solver => { %>
+              <p>
+                <span class="name"><%= solver.name %></span>
+                 at <%= solver.startedAt.toLocaleTimeString() %>
+                 on <%= solver.startedAt.toLocaleDateString() %>
+              </p>
+            <% })%>
+          </div>
+        </div>
       </div>
     </div>
     <% if(user.challenges.includes(challenge.id)){ %>

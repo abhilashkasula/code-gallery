@@ -161,3 +161,31 @@
 input {
   outline: none;
 }
+
+.picked-people {
+  max-width: 20em;
+  overflow: scroll;
+  border:1px solid #ccc;
+  color: rgb(56, 55, 55);
+  max-height: 4em;
+  border-radius: 0.3em;
+  padding: 0.6em;
+}
+
+.picked-people > p {
+  margin-top: 0;
+}
+
+.picked-people  .name {
+  font-weight: 900;
+}
+
+.solvers {
+  margin-top: 1.5em;
+  display: flex;
+}
+
+.solvers > .label {
+  margin-top: 6px;
+  margin-right: 4px;
+}

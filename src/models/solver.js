@@ -1,9 +1,9 @@
 class Solver {
   constructor(name, startedAt, isSolved, solvedAt) {
     this.name = name;
-    this.startedAt = startedAt;
+    this.startedAt = new Date(startedAt);
     this.isSolved = isSolved;
-    this.solvedAt = solvedAt;
+    this.solvedAt = new Date(solvedAt);
   }
 
   getName() {
