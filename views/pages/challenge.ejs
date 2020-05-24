@@ -27,8 +27,8 @@
         <span class="challenge-created-name">
           <%= challenge.createdBy %>
         </span>
-        at <%= challenge.createdAt.toLocaleTimeString() %> on <%=
-        challenge.createdAt.toLocaleDateString() %>
+        on <%= challenge.createdAt.toDateString() %> at <%=
+        challenge.createdAt.toTimeString() %>
       </div>
     </div>
     <% if(user.challenges.includes(challenge.id)){ %>
