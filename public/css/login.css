@@ -40,15 +40,24 @@
   font-weight: 600;
   font-size: 1.1em;
   outline: none;
+  cursor: pointer;
 }
 
 .green {
   background: linear-gradient(rgb(19, 194, 19), rgb(37, 163, 37));
 }
 
+.green:hover {
+  background: linear-gradient(rgb(19, 180, 19), rgb(36, 154, 36));
+}
+
 .blue {
   margin-top: 1em;
   background: linear-gradient(rgb(19, 174, 194), rgb(37, 134, 163));
+}
+
+.blue:hover {
+  background: linear-gradient(rgb(17, 151, 169), rgb(32, 118, 144));
 }
 
 .wrong {
