@@ -38,7 +38,8 @@ const signup = function (req, res) {
   const {username, password} = req.body;
   const isValidUser = req.app.locals.users.add(username.toLowerCase(), password, []);
   const json = JSON.stringify(req.app.locals.users);
-  req.app.locals.db.set('code-gallery-users', json);
+  isValidUser && req.app.locals.db.set('code-gallery-users', json);
+  isValidUser && req.app.locals.notifySlack(username);
   res.json({isValidUser});
 };
 

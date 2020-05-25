@@ -5,6 +5,7 @@ const handlers = require('./handlers');
 const Users = require('./models/users');
 const Challenges = require('./models/challenges');
 const {challengesRouter} = require('./routes/challenges');
+const {notifySlack} = require('./notifySlack');
 const {REDIS_URL} = require(`${__dirname}/../config.js`);
 
 const app = express();
@@ -22,6 +23,7 @@ const client = redis.createClient(REDIS_URL);
 
 app.locals.sessions = {};
 app.locals.db = client;
+app.locals.notifySlack = notifySlack;
 
 app.set('view engine', 'ejs');
 app.use(express.static('public', {index: false}));
